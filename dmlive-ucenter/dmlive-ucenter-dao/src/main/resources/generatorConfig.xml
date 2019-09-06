@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 配置文件 -->
+    <properties resource="generator.properties"></properties>
+
+    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <!-- 为生成的Java模型创建一个toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
+        <!-- 为生成的Java模型类添加序列化接口，并生成serialVersionUID字段 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+        <!-- Java模型生成equals和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
+
+        <!-- 生成的代码去掉注释 -->
+        <commentGenerator type="cn.caohangwei.dmlive.common.config.CommentGenerator">
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="${generator.jdbc.driver}"
+                        connectionURL="${generator.jdbc.url}"
+                        userId="${generator.jdbc.username}"
+                        password="${generator.jdbc.password}">
+        </jdbcConnection>
+
+        <!-- model生成 -->
+        <javaModelGenerator targetPackage="cn.caohangwei.dmlive.ucenter.dao.model" targetProject="dmlive-ucenter/dmlive-ucenter-dao/src/main/java" />
+
+        <!-- MapperXML生成 -->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="G:/GitHub/dmlive/dmlive-ucenter/dmlive-ucenter-rpc-service/src/main/resources" />
+
+        <!-- Mapper接口生成 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.caohangwei.dmlive.ucenter.dao.mapper"  targetProject="dmlive-ucenter/dmlive-ucenter-dao/src/main/java" />
+
+        <!-- 需要映射的表 -->
+                                    <table tableName="ucenter_user" domainObjectName="UcenterUser"></table>
+                        </context>
+</generatorConfiguration>
